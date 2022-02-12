@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { axiosInstance } from '../config';
 
 import "./Register.css"
-import { Link, useNavigate } from "react-router-dom"
+import { Link } from "react-router-dom"
 export default function Register() {
 
 
@@ -12,8 +12,6 @@ export default function Register() {
     })
 
     const [error, setError] = useState(false);
-
-    const history = useNavigate();
 
     let name, value;
     const HandleInputs = (e) => {
