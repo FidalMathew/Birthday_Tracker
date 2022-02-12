@@ -8,13 +8,13 @@ const Link = new mongoose.Schema(
             unique: true,
         },
 
-        links: [
+        birthday: [
             {
-                text: {
+                name: {
                     type: String,
 
                 },
-                link: {
+                date: {
                     type: String,
 
                 },

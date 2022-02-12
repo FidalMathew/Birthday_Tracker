@@ -23,9 +23,6 @@ export default function Home() {
                         (user) ?
                             (<>
                                 <h1 className='pt-5 mb-5' >Welcome {user.username}</h1>
-                                <div className='mb-4'>
-                                    <button><Link to={`/user/${user.username}`} target="_blank" className='text-white'>CHECKOUT YOUR DEV_PROFILE</Link></button>
-                                </div>
                                 <p> <Link to="/edit">Edit your DEV_PROFILE</Link>  </p>
                                 <p> <span onClick={handleLogout}>Logout</span>  </p>
 

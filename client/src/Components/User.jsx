@@ -13,7 +13,7 @@ export default function User(props) {
         const getUserLink = async () => {
             try {
                 const resLink = await axiosInstance.get("/links/" + user.username);
-                setuserLinks(resLink.data.links);
+                setuserLinks(resLink.data.birthday);
 
             }
             catch (err) {
@@ -34,10 +34,7 @@ export default function User(props) {
             <div className='d-flex flex-column justify-content-center align-items-center pt-5'>
 
                 {userLinks.map((val, ind) => {
-                    return (<a key={ind} className='LinkButton links'
-                        href={val.link} target="_blank" rel="noreferrer">  {val.text}
-
-                    </a>)
+                    return (<a key={ind} className='LinkButton links'> {val.name} </a>)
                 })}
 
 
