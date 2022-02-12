@@ -8,7 +8,7 @@ export default function Register() {
 
     const [user, setUser] = useState({
 
-        username: "", email: "", g_user: "", d_user: "", password: ""
+        username: "", email: "", password: ""
     })
 
     const [error, setError] = useState(false);
@@ -26,17 +26,14 @@ export default function Register() {
 
     const postData = async (e) => {
         e.preventDefault();
-        const { username, email, g_user, d_user, password } = user;
+        const { username, email, password } = user;
 
-        console.log(username, email, g_user);
 
         setError(false);
         try {
             const res = await axiosInstance.post("/auth/register", {
                 username,
                 email,
-                g_user,
-                d_user,
                 password,
             });
             res.data && window.location.replace("/login");
@@ -60,14 +57,7 @@ export default function Register() {
                     <div className="mb-4">
                         <input type="email" className="form-control" value={user.email} name='email' onChange={HandleInputs} placeholder='Email (required)' required />
                     </div>
-                    <div className="mb-4">
-                        <input type="text" className="form-control" value={user.g_user} name='g_user' onChange={HandleInputs} placeholder='Github Username' />
 
-                    </div>
-                    <div className="mb-4">
-                        <input type="text" className="form-control" value={user.d_user} name='d_user' onChange={HandleInputs} placeholder='Dev.to Username' />
-
-                    </div>
                     <div className="mb-4">
                         <input type="password" className="form-control" value={user.password} name='password' onChange={HandleInputs} placeholder='Password (required)' required />
                     </div>
