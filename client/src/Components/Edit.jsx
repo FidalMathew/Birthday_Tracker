@@ -40,7 +40,7 @@ export default function Edit() {
 
             await axiosInstance.put("/links/", {
                 username: user.username,
-                links: [...userLinks, { text: stext, link: slink }]
+                birthday: [...userLinks, { name: stext, date: slink }]
             });
             setrefData(!refData);
             setText("");
@@ -65,7 +65,7 @@ export default function Edit() {
 
             await axiosInstance.put("/links/", {
                 username: user.username,
-                links: ARR
+                birthday: ARR
             });
             setrefData(!refData);
 
@@ -80,7 +80,7 @@ export default function Edit() {
 
     const HandleSubmit = (e) => {
         e.preventDefault();
-        setuserLinks([...userLinks, { text: stext, link: slink }]);
+        setuserLinks([...userLinks, { name: stext, link: slink }]);
 
         PostLink();
     }
@@ -89,7 +89,7 @@ export default function Edit() {
         const getUserLink = async () => {
             try {
                 const resLink = await axiosInstance.get("/links/" + user.username);
-                setuserLinks(resLink.data.links);
+                setuserLinks(resLink.data.birthday);
 
             }
             catch (err) {
@@ -143,8 +143,8 @@ export default function Edit() {
                         {userLinks.map((val, ind) => {
                             return (<div key={ind} className='text_link mb-2 p-2' >
 
-                                <div> {`text: ${val.text} `}</div> <button onClick={() => deleteData(val, ind)}>X</button>
-                                <div>{`link: ${val.link}`}</div>
+                                <div> {`text: ${val.name} `}</div> <button onClick={() => deleteData(val, ind)}>X</button>
+                                <div>{`link: ${val.date}`}</div>
 
                             </div>)
                         })}
@@ -157,9 +157,6 @@ export default function Edit() {
                 <div className={`${(windowSize > 1000 || show) ? `d-block` : `d-none`} display_section `}>
                     <div className='p-2 bg-dark'>
                         <div className='text-white pl-2'>To- <Link to="/" className='text-light' > Home Page</Link></div>
-
-                        <div className='text-white pl-2'>To- <Link to={`/user/${user.username}`} className='text-light' target="_blank"> DEV_Profile</Link></div>
-
                     </div>
                     <User refData={refData} />
                 </div>
