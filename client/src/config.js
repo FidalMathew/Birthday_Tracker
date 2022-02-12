@@ -1,5 +1,5 @@
 import axios from 'axios';
 
 export const axiosInstance = axios.create({
-    baseURL: "https://dev-linktree.herokuapp.com/api/"
+    baseURL: "http://localhost:5000/api/"
 });

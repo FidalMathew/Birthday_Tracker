@@ -5,6 +5,9 @@ const dotenv = require("dotenv");
 const authRoute = require("./Router/auth");
 const linksRoute = require("./Router/links");
 const path = require("path");
+const cors = require('cors')
+
+app.use(cors())
 
 
 dotenv.config({ path: "../config.env" });
@@ -24,9 +27,9 @@ app.use("/api/links", linksRoute);
 
 app.use(express.static(path.join(__dirname, "/client/build")));
 
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '/client/build', 'index.html'));
-});
+// app.get('*', (req, res) => {
+//     res.sendFile(path.join(__dirname, '/client/build', 'index.html'));
+// });
 
 app.listen(Port, () => {
     console.log(`Server is listening at port ${Port}`);
