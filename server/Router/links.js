@@ -69,7 +69,44 @@ router.put("/", async (req, res) => {
 });
 
 
-//UPDATE POST
+// DELETE
+
+router.put("/del", async (req, res) => {
+
+    // console.log(req.body);
+
+    try {
+
+        const exist_link = await Link.findOne({ username: req.body.username });
+
+        if (exist_link) {
+
+            if (req.body.links.length >= 0) {
+                exist_link.links = req.body.links;
+                const user = await exist_link.save();
+                res.status(200).json(user);
+            }
+            else
+                res.status(200).json(exist_link);
+
+
+
+        }
+
+
+
+    } catch (error) {
+        console.log(error);
+
+    }
+
+
+
+
+
+});
+
+
 
 
 
