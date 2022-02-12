@@ -59,22 +59,20 @@ export default function Edit() {
 
             return i !== ind
         })
+        console.log(ARR);
         setuserLinks(ARR);
         try {
 
-
-            await axiosInstance.put("/links/", {
+            const res = await axiosInstance.put("/links/del/", {
                 username: user.username,
                 links: ARR
             });
+            console.log(res);
             setrefData(!refData);
 
         } catch (error) {
             console.log(error);
         }
-
-
-
 
     }
 
