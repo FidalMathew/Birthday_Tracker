@@ -127,8 +127,8 @@ export default function Edit() {
                         {userLinks.map((val, ind) => {
                             return (<div key={ind} className='text_link mb-2 p-2' >
 
-                                <div> {`text: ${val.name} `}</div> <button onClick={() => deleteData(val, ind)}>X</button>
-                                <div>{`link: ${val.date}`}</div>
+                                <div> {`Name: ${val.name} `}</div> <button onClick={() => deleteData(val, ind)}>X</button>
+                                <div>{`Bdate: ${val.date}`}</div>
 
                             </div>)
                         })}
