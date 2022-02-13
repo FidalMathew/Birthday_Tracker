@@ -47,8 +47,7 @@ router.put("/", async (req, res) => {
             }
         }
         else {
-            // console.log(exist_link.links.length);
-            // console.log(req.body.links.length);
+
             if (req.body.birthday.length) {
                 exist_link.birthday = req.body.birthday;
                 const user = await exist_link.save();
@@ -56,7 +55,6 @@ router.put("/", async (req, res) => {
             }
             else
                 res.status(200).json(exist_link);
-            // res.status(200).json(exist_link);
         }
     }
 
