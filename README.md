@@ -6,21 +6,24 @@ The most convient way for you to track bdays of your friends, family and close o
 
 There are 3 main components required in this project. 
 
-**config.env** - Before running the project you'll need to add a file named config.env in the root directory.
-                  It should include 
-                  `MONGO_URL` - Setup mongodb and set the connection string
-                  `GMAIL_PASSWORD` - Your Email password, on which you would like to recieve notifications // prefer using unused emails or create a new one 
+**config.env** - Before running the project you'll need to add a file named config.env in the root directory. <br>
+                 <br>
+                 It should include -<br>
+                  `MONGO_URL` - Setup mongodb and set the connection string <br>
+                  `GMAIL_PASSWORD` - Your Email password, on which you would like to recieve notifications // prefer using unused emails or create a new one <br>
 
 
-**Client** - Once you are in the client directory. 
-      Run Commands 
-      - `npm i` - It will install the packages needed for the project
-      - `npm start` -  It will run the frontend of the project at localhost:3000   
+**Client** - Once you are in the client directory. <br>
+       <br>
+          Run Commands <br>
+      - `npm i` - It will install the packages needed for the project <br>
+      - `npm start` -  It will run the frontend of the project at localhost:3000   <br>
       
-**Server** - In the Server folder, 
-            Run Commands 
-      - `npm i` - It will install the packages needed for the project
-      - `nodemon app.js` -  It will run the frontend of the project at PORT  specified by you   
+**Server** - In the Server folder, <br>
+           <br>
+           Run Commands <br>
+      - `npm i` - It will install the packages needed for the project <br>
+      - `nodemon app.js` -  It will run the frontend of the project at PORT  specified by you  <br>  
       
 
 
