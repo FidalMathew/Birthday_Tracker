@@ -81,8 +81,8 @@ router.put("/del", async (req, res) => {
 
         if (exist_link) {
 
-            if (req.body.links.length >= 0) {
-                exist_link.links = req.body.links;
+            if (req.body.birthday.length >= 0) {
+                exist_link.birthday = req.body.birthday;
                 const user = await exist_link.save();
                 res.status(200).json(user);
             }
