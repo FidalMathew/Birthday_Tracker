@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useContext } from 'react'
-import User from './User'
 import "./edit.css"
 import { Context } from '../Context/Context';
 import { axiosInstance } from '../config';
@@ -11,40 +10,21 @@ export default function Edit() {
     const [userLinks, setuserLinks] = useState([]);
 
     const [stext, setText] = useState("")
-    const [slink, setLink] = useState("")
-
-
-    const [show, setshow] = useState(true);
+    const [sdate, setDate] = useState("")
 
     const [refData, setrefData] = useState(true)
-
-
-    const [windowSize, setWindowSize] = useState(null)
-
-    useEffect(() => {
-        const handleResize = () => {
-            setWindowSize(window.innerWidth)
-        }
-
-        window.addEventListener('resize', handleResize)
-
-        return () => window.removeEventListener('resize', handleResize)
-    }, [])
-
-
 
     const PostLink = async () => {
 
         try {
-
-
             await axiosInstance.put("/links/", {
                 username: user.username,
-                birthday: [...userLinks, { name: stext, date: slink }]
+                birthday: [...userLinks, { name: stext, date: sdate }]
             });
+
             setrefData(!refData);
             setText("");
-            setLink("");
+            setDate("");
 
         } catch (error) {
             console.log(error);
@@ -78,16 +58,16 @@ export default function Edit() {
 
     const HandleSubmit = (e) => {
         e.preventDefault();
-        setuserLinks([...userLinks, { name: stext, link: slink }]);
-
+        console.log(typeof (sdate));
+        setuserLinks([...userLinks, { name: stext, date: sdate }]);
         PostLink();
     }
 
     useEffect(() => {
         const getUserLink = async () => {
             try {
-                const resLink = await axiosInstance.get("/links/" + user.username);
-                setuserLinks(resLink.data.birthday);
+                const resdate = await axiosInstance.get("/links/" + user.username);
+                setuserLinks(resdate.data.birthday);
 
             }
             catch (err) {
@@ -101,36 +81,38 @@ export default function Edit() {
     }, [user.username])
 
 
-    const ToggleDisplay = (e) => {
+    // const ToggleDisplay = (e) => {
 
-        if (windowSize < 1000) {
-            if (e.target.innerText === "CLOSE") {
-                e.target.innerText = "PREVIEW"
+    //     if (windowSize < 1000) {
+    //         if (e.target.innerText === "CLOSE") {
+    //             e.target.innerText = "PREVIEW"
 
-            }
-            else
-                e.target.innerText = "CLOSE";
+    //         }
+    //         else
+    //             e.target.innerText = "CLOSE";
 
-            setshow(!show);
+    //         setshow(!show);
 
-        }
+    //     }
 
-    }
+    // }
 
     return (
-        <div className='EditPage'>
+        <div className='EditPage container'>
             <div className='bg-white text-dark rounded AdminEdit_Section'>
                 <div className='edit_section'>
 
-                    <h4>Add Links</h4>
+                    <h4>Add Birthdays</h4>
                     <form onSubmit={HandleSubmit}>
                         <div className="input-group flex-nowrap api_input mb-3">
 
                             <input type="text" className="form-control" placeholder="Text"
                                 aria-label="Username" aria-describedby="addon-wrapping" onChange={(e) => setText(e.target.value)} value={stext} required />
 
-                            <input type="text" className="form-control" placeholder="Link"
-                                aria-label="Username" aria-describedby="addon-wrapping" onChange={(e) => setLink(e.target.value)} value={slink} required />
+                            <input type="date" className="form-control" placeholder="Link"
+                                aria-label="Username" aria-describedby="addon-wrapping" onChange={(e) => setDate(e.target.value)} value={sdate} required />
+
+
                             <button className='ml-3 btn btn-primary' type='submit'>Add</button>
                         </div>
 
@@ -149,15 +131,15 @@ export default function Edit() {
 
                     </div>
 
-                    <button className='display_userlinks' onClick={(e) => ToggleDisplay(e)}>CLOSE</button>
+                    {/* <button className='display_userlinks' onClick={(e) => ToggleDisplay(e)}>CLOSE</button> */}
                 </div>
 
-                <div className={`${(windowSize > 1000 || show) ? `d-block` : `d-none`} display_section `}>
+                {/* <div className={`${(windowSize > 1000 || show) ? `d-block` : `d-none`} display_section `}>
                     <div className='p-2 bg-dark'>
                         <div className='text-white pl-2'>To- <Link to="/" className='text-light' > Home Page</Link></div>
                     </div>
                     <User refData={refData} />
-                </div>
+                </div> */}
             </div>
         </div >
 
