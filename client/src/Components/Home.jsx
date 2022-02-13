@@ -23,7 +23,7 @@ export default function Home() {
                         (user) ?
                             (<>
                                 <h1 className='pt-5 mb-5' >Welcome {user.username}</h1>
-                                <p> <Link to="/edit">Edit your DEV_PROFILE</Link>  </p>
+                                <p> <Link to="/edit">Edit your Birthday reminders</Link>  </p>
                                 <p> <span onClick={handleLogout}>Logout</span>  </p>
 
 
