@@ -5,22 +5,24 @@
 }
 
 .AdminEdit_Section {
-  width: 96vw;
-  height: 90vh;
+  width: 66vw;
+  height: 60vh;
   box-shadow: 0px 3px 8px #000000;
   padding: 35px;
   display: flex;
+  position: relative;
+  bottom: 3em;
 }
 
 .edit_section {
-  flex-basis: 65%;
-  border-right: solid #7d86ba;
+  /* flex-basis: 65%; */
+  /* border-right: solid #7d86ba; */
   padding-right: 8%;
   overflow: auto;
 }
 
 .display_section {
-  flex-basis: 35%;
+  /* flex-basis: 35%; */
   padding: 20px;
 }
 
@@ -50,29 +52,29 @@
   display: none;
 }
 
-@media screen and (max-width: 1000px) {
-  .display_section {
-    display: none;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    padding: 0;
-    z-index: 2;
-  }
-  .edit_section {
-    flex-basis: 100%;
-    border-right: none;
-  }
-
-  .display_userlinks {
-    z-index: 10;
-    position: absolute;
-    font-size: 2em;
-    bottom: 10%;
-    left: 15%;
-    display: block;
-    box-shadow: 0px 2px 5px #4b4b4b;
-  }
+/* @media screen and (max-width: 1000px) { */
+.display_section {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0;
+  z-index: 2;
 }
+.edit_section {
+  flex-basis: 100%;
+  border-right: none;
+}
+
+.display_userlinks {
+  z-index: 10;
+  position: absolute;
+  font-size: 2em;
+  bottom: 10%;
+  left: 15%;
+  display: block;
+  box-shadow: 0px 2px 5px #4b4b4b;
+}
+/* } */
