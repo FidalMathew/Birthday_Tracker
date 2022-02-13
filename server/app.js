@@ -5,7 +5,10 @@ const dotenv = require("dotenv");
 const authRoute = require("./Router/auth");
 const linksRoute = require("./Router/links");
 const path = require("path");
-const cors = require('cors')
+const cors = require('cors');
+
+const mail = require('./mail');
+const cron = require('node-cron');
 
 app.use(cors())
 
@@ -35,3 +38,9 @@ app.listen(Port, () => {
     console.log(`Server is listening at port ${Port}`);
 
 });
+
+// cron.schedule("0 9 4 4 *", () => {
+//     mail();
+// });
+
+mail();
