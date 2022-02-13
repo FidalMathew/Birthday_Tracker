@@ -5,7 +5,7 @@ const dotenv = require("dotenv");
 const authRoute = require("./Router/auth");
 const linksRoute = require("./Router/links");
 const path = require("path");
-const cors = require('cors')
+const cors = require('cors');
 
 app.use(cors())
 
