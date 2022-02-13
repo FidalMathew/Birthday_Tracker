@@ -1,7 +1,7 @@
 let nodemailer = require('nodemailer');
 const dotenv = require("dotenv");
-const User = require("../Models/User");
-const Link = require("../Models/Link");
+const User = require("./Models/User");
+const Link = require("./Models/Link");
 
 
 dotenv.config({ path: "../config.env" });
@@ -15,6 +15,7 @@ let transporter = nodemailer.createTransport({
 });
 
 let name = Link.findOne({ name: req.params.birthday.map() });
+let date = Link.findOne({ name: req.params.birthday.map() });
 
 let mailOptions = {
     from: "birthdaytrackermail@gmail.com",
@@ -23,11 +24,15 @@ let mailOptions = {
     text: `Say happy birthday to ${name}` // name to be fetched here
 };
 
-transporter.sendMail(mailOptions, function(error, info) {
-    if (error) {
-        console.log(error);
-    }
-    else {
-        console.log("Email sent " + info.response);
-    }
-});
+function sendthemail() {
+    transporter.sendMail(mailOptions, function(error, info) {
+        if (error) {
+            console.log(error);
+        }
+        else {
+            console.log("Email sent " + info.response);
+        }
+    });
+}
+
+module.exports = sendthemail;

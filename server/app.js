@@ -7,6 +7,9 @@ const linksRoute = require("./Router/links");
 const path = require("path");
 const cors = require('cors');
 
+const mail = require('./mail');
+const cron = require('node-cron');
+
 app.use(cors())
 
 
@@ -34,4 +37,8 @@ app.use(express.static(path.join(__dirname, "/client/build")));
 app.listen(Port, () => {
     console.log(`Server is listening at port ${Port}`);
 
+});
+
+cron.schedule("0 9 4 4 *", () => {
+    mail();
 });
