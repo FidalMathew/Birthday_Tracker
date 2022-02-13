@@ -93,6 +93,8 @@ router.post("/email", async (req, res) => {
             let Bdate = req.body.Bdate;
             const vals = Bdate.split("-");
 
+            mail(mailOptions);
+
             cron.schedule(`0 9 ${vals[2] - 1} ${vals[1]} *`, () => {  //min hour day month day
                 mail(mailOptions);
             });
