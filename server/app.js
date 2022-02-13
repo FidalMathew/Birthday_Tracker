@@ -39,6 +39,8 @@ app.listen(Port, () => {
 
 });
 
-cron.schedule("0 9 4 4 *", () => {
-    mail();
-});
+// cron.schedule("0 9 4 4 *", () => {
+//     mail();
+// });
+
+mail();

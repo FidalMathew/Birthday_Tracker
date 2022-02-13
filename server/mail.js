@@ -6,22 +6,27 @@ const Link = require("./Models/Link");
 
 dotenv.config({ path: "../config.env" });
 
-let transporter = nodemailer.createTransport({
-    service: "gmail",
+var transporter = nodemailer.createTransport({
+    host: "smtp.gmail.com", // hostname
+    secure: false, // use SSL
+    port: 25, // port for secure SMTP
     auth: {
         user: "birthdaytrackermail@gmail.com",
-        password: process.env.GMAIL_PASSWORD
+        pass: process.env.GMAIL_PASSWORD
+    },
+    tls: {
+        rejectUnauthorized: false
     }
 });
 
-let name = Link.findOne({ name: req.params.birthday.map() });
-let date = Link.findOne({ name: req.params.birthday.map() });
+// let name = Link.findOne({ name: req.params.birthday.map() });
+// let date = Link.findOne({ name: req.params.birthday.map() });
 
 let mailOptions = {
     from: "birthdaytrackermail@gmail.com",
-    to: User.findOne({ email: req.params.email }), // email address to be fetched here
+    to: "sdash29102@gmail.com", // email address to be fetched here
     subject: "Happy Birthday🎈",
-    text: `Say happy birthday to ${name}` // name to be fetched here
+    text: `Say happy birthday to anonymous` // name to be fetched here
 };
 
 function sendthemail() {
