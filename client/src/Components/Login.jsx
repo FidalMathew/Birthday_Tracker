@@ -33,7 +33,7 @@ export default function Register() {
     return (
         <div className='Register'>
             <div className='bg-white text-dark rounded formdiv'>
-                <h3 className='text-center mb-4'>Sign in to Dev_profile Account </h3>
+                <h3 className='text-center mb-4'>Sign in</h3>
                 <form onSubmit={handleSubmit}>
                     <div className="mb-4">
                         <input type="text" className="form-control" placeholder='Email' ref={emailRef} />
