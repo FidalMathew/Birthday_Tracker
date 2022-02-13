@@ -56,11 +56,32 @@ export default function Edit() {
 
     }
 
+
+    const PostEmail = async () => {
+
+        try {
+            await axiosInstance.post("/links/email", {
+                username: user.username,
+                email: user.email,
+                Bname: stext,
+                Bdate: sdate
+            });
+
+
+        } catch (error) {
+            console.log(error);
+            console.log("Error sending email!");
+        }
+
+
+    }
+
     const HandleSubmit = (e) => {
         e.preventDefault();
         console.log(typeof (sdate));
         setuserLinks([...userLinks, { name: stext, date: sdate }]);
         PostLink();
+        PostEmail();
     }
 
     useEffect(() => {
@@ -79,23 +100,6 @@ export default function Edit() {
         getUserLink(user.username);
 
     }, [user.username])
-
-
-    // const ToggleDisplay = (e) => {
-
-    //     if (windowSize < 1000) {
-    //         if (e.target.innerText === "CLOSE") {
-    //             e.target.innerText = "PREVIEW"
-
-    //         }
-    //         else
-    //             e.target.innerText = "CLOSE";
-
-    //         setshow(!show);
-
-    //     }
-
-    // }
 
     return (
         <div className='EditPage container'>
@@ -130,16 +134,9 @@ export default function Edit() {
                         })}
 
                     </div>
-
-                    {/* <button className='display_userlinks' onClick={(e) => ToggleDisplay(e)}>CLOSE</button> */}
                 </div>
 
-                {/* <div className={`${(windowSize > 1000 || show) ? `d-block` : `d-none`} display_section `}>
-                    <div className='p-2 bg-dark'>
-                        <div className='text-white pl-2'>To- <Link to="/" className='text-light' > Home Page</Link></div>
-                    </div>
-                    <User refData={refData} />
-                </div> */}
+
             </div>
         </div >
 

@@ -22,15 +22,15 @@ var transporter = nodemailer.createTransport({
 // let name = Link.findOne({ name: req.params.birthday.map() });
 // let date = Link.findOne({ name: req.params.birthday.map() });
 
-let mailOptions = {
-    from: "birthdaytrackermail@gmail.com",
-    to: "sdash29102@gmail.com", // email address to be fetched here
-    subject: "Happy Birthday🎈",
-    text: `Say happy birthday to anonymous` // name to be fetched here
-};
+// let mailOptions = {
+//     from: "birthdaytrackermail@gmail.com",
+//     to: "sdash29102@gmail.com", // email address to be fetched here
+//     subject: "Happy Birthday🎈",
+//     text: `Say happy birthday to anonymous` // name to be fetched here
+// };
 
-function sendthemail() {
-    transporter.sendMail(mailOptions, function(error, info) {
+function sendthemail(mailOptions) {
+    transporter.sendMail(mailOptions, function (error, info) {
         if (error) {
             console.log(error);
         }

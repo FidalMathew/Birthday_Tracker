@@ -30,6 +30,7 @@ app.use("/api/links", linksRoute);
 
 app.use(express.static(path.join(__dirname, "/client/build")));
 
+// mail();
 // app.get('*', (req, res) => {
 //     res.sendFile(path.join(__dirname, '/client/build', 'index.html'));
 // });
@@ -43,4 +44,4 @@ app.listen(Port, () => {
 //     mail();
 // });
 
-mail();
+// mail();

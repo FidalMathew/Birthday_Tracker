@@ -1,6 +1,8 @@
 const router = require("express").Router();
 const Link = require("../Models/Link");
 
+const mail = require('../mail');
+const cron = require('node-cron');
 
 router.get("/:uname", async (req, res) => {
 
@@ -14,10 +16,6 @@ router.get("/:uname", async (req, res) => {
 
 
 })
-
-
-
-
 
 
 //CREATE LINK
@@ -39,6 +37,8 @@ router.put("/", async (req, res) => {
 
                 });
 
+                // mail(mailOptions);
+
                 const user = await newLink.save();
                 console.log(user);
                 res.status(200).json(user);
@@ -50,6 +50,7 @@ router.put("/", async (req, res) => {
 
             if (req.body.birthday.length) {
                 exist_link.birthday = req.body.birthday;
+                // mail(mailOptions);
                 const user = await exist_link.save();
                 res.status(200).json(user);
             }
@@ -65,6 +66,49 @@ router.put("/", async (req, res) => {
 
 
 });
+
+
+//RECIEVE EMAIL
+
+
+
+router.post("/email", async (req, res) => {
+
+    // console.log(req.body);
+
+    try {
+
+        const exist_link = await Link.findOne({ username: req.body.username });
+
+        if (exist_link) {
+
+            let mailOptions = {
+                from: "birthdaytrackermail@gmail.com",
+                to: req.body.email || "sdash29102@gmail.com", // email address to be fetched here
+                subject: "Happy Birthday🎈",
+                text: `Say happy birthday to ${req.body.Bname}` // name to be fetched here
+            };
+
+            console.log(req.body.Bdate);
+
+            cron.schedule("0 9 4 4 *", () => {
+                mail(mailOptions);
+            });
+
+
+            console.log(mailOptions);
+        }
+
+    } catch (error) {
+        console.log(error);
+    }
+
+});
+
+
+
+
+
 
 
 // DELETE
@@ -87,8 +131,6 @@ router.put("/del", async (req, res) => {
             else
                 res.status(200).json(exist_link);
 
-
-
         }
 
 
@@ -97,10 +139,6 @@ router.put("/del", async (req, res) => {
         console.log(error);
 
     }
-
-
-
-
 
 });
 
